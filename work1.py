@@ -7,12 +7,14 @@ cnum=[]
 ienum=0
 ifstack=[]
 ieienum=0
+anno=0
 
 def keyword(f):
     global num
     global snum
     global ienum
     global ieienum
+    global anno
 #    for line in f:
  #       print(line)
     for line in f:
@@ -22,8 +24,32 @@ def keyword(f):
             if(i>=l-1):
                 break
             #print('i',i)
+            if(anno==1 and line[i]!='*'):
+                continue
+            if(anno==1 and line[i]=='*'):
+                if(line[i+1]=='\\'):
+                    anno=0
+                continue
             if(line[i]>'z' or line[i]<'a'):
-                i+=1
+                if(line[i]=='\''):
+                    j=i
+                    while j < l - 1:
+                        if (line[j] =='\''):
+                            break
+                        j+=1
+                elif(line[i]=='\"'):
+                    j = i
+                    while j < l - 1:
+                        if (line[j] == '\"'):
+                            break
+                        j += 1
+                elif(line[i]=='\\'):
+                    if(line[i+1]=='\\'):
+                        break
+                    elif(line[i+1]=='*'):
+                        anno=1
+                else:
+                    i+=1
                 continue
             j=i
             while j<l-1:
