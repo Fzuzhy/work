@@ -1,6 +1,10 @@
-key=['auto','break','case','char','const','continue','default','do','double','else','enum','extern','float','for','goto','if',
-'int','long','register','return','short','signed','sizeof','static',
-'struct','switch','typedef','union','unsigned','void','volatile','while']
+key=['auto','break','case','char','const',
+     'continue','default','do','double','else',
+     'enum','extern','float','for','goto',
+     'if','int','long','register','return',
+     'short','signed','sizeof','static','struct',
+     'switch','typedef','union','unsigned','void',
+     'volatile','while']
 num=0
 snum=0
 cnum=[]
@@ -54,7 +58,8 @@ def keyword(f):
             j=i
             while j<l-1:
                 #print('j',j)
-                if(line[j]>='a' and line[j]<='z' and (line[j+1]<'a' or line[j+1]>'z')):
+                if(line[j]>='a' and line[j]<='z'
+                        and (line[j+1]<'a' or line[j+1]>'z')):
                     break
                 j+=1
                 #print(line[j])
